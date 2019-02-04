@@ -1,0 +1,5 @@
+﻿  War.cpp
+c:\dev\war\war\war\war.cpp(22): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\dev\war\war\war\war.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\dev\war\war\war\war.cpp(82): warning C4018: '<': signed/unsigned mismatch
+  War.vcxproj -> C:\Dev\War\War\Debug\War.exe
