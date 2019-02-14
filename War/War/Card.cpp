@@ -2,16 +2,17 @@
 #include "Card.h"
 
 // Constructor initializes value/suit
-Card::Card(int v, string s) 
+Card::Card(int8_t v) 
 {
-	value = v;
-	suit = s;
+	suitAndValue = v;
 }
 
 // Destructor
 Card::~Card()
 {
 }
+
+
 
 
 
