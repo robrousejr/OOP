@@ -4,7 +4,7 @@
 
 1.  The deck is divided evenly, with each player receiving 26 cards, dealt one at a time, face down. Anyone may deal first. Each player places his stack of cards face down, in front of him.
 2. Each player turns up a card at the same time and the player with the higher card takes both cards and puts them, face down, on the bottom of his stack.
-3. If the cards are the same rank, it is War. Each player turns up one card face down and one card face up. The player with the higher cards takes both piles (six cards). If the turned-up cards are again the same rank, each player places another card face down and turns another card face up. The player with the higher card takes all 10 cards, and so on.
+3. If the cards are the same rank, it is War. Each player turns up two cards face down and one card face up. The player with the higher cards takes both piles (six cards). If the turned-up cards are again the same rank, each player places another card face down and turns another card face up. The player with the higher card takes all 10 cards, and so on.
 4. This continues until one player runs out of cards, marking the other player the winner
 
 *[Source](https://www.bicyclecards.com/how-to-play/war/)*
