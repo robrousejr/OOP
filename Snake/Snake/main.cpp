@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <time.h>
+
 using namespace sf;
 
 int N = 30, M = 20;
@@ -19,8 +20,7 @@ struct Fruct
 	int x, y;
 } f;
 
-void
-Tick()
+void Tick()
 {
 	for (int i = num; i > 0; --i) {
 		s[i].x = s[i - 1].x;
@@ -56,8 +56,7 @@ Tick()
 			num = i;
 }
 
-int
-main()
+int main()
 {
 	srand(time(0));
 
@@ -86,6 +85,7 @@ main()
 			if (e.type == Event::Closed)
 				window.close();
 		}
+
 
 		if (Keyboard::isKeyPressed(Keyboard::Left))
 			dir = 1;
