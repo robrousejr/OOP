@@ -13,12 +13,12 @@ int dir, num = 4;
 struct Snake
 {
 	int x, y;
-} s[100];
+} s[100]; // ASK: What significance does this have?
 
 struct Fruct
 {
 	int x, y;
-} f;
+}f;
 
 void Tick()
 {
@@ -27,13 +27,13 @@ void Tick()
 		s[i].y = s[i - 1].y;
 	}
 
-	if (dir == 0)
+	if (dir == 0) // Down
 		s[0].y += 1;
-	if (dir == 1)
+	if (dir == 1) // Left
 		s[0].x -= 1;
-	if (dir == 2)
+	if (dir == 2) // Right
 		s[0].x += 1;
-	if (dir == 3)
+	if (dir == 3) // Up
 		s[0].y -= 1;
 
 	if ((s[0].x == f.x) && (s[0].y == f.y)) {
