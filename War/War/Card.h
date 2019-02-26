@@ -127,6 +127,17 @@ public:
 				return os << (int)item.suitAndValue % 13 + 1 << " of Clubs";
 			}
 		}
+		else
+		{
+			if (item.suitAndValue == 53)
+			{
+				return os << "Red Joker";
+			}
+			else if (item.suitAndValue == 54)
+			{
+				return os << "Black Joker";
+			}
+		}
 
 		
 	}
