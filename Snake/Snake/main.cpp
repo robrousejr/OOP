@@ -8,7 +8,8 @@ int main();
 
 // Prototypes
 void Tick(Game&);
-void timeDelay(float&, float&, Game&);
+void timeDelay(float&, Game&);
+void directionTick(int&);
 
 
 int dir, num = 4;
@@ -26,7 +27,7 @@ struct Fruct
 int main()
 {
 	srand(time(0));
-	Game mainGame(30, 20, 16); // Columns: 30, Rows: 20, Size: 16
+	Game mainGame(30, 20, 16, 0.1); // Columns: 30, Rows: 20, Size: 16
 
 	RenderWindow window(VideoMode(mainGame.getWidth(), mainGame.getHeight()), "Snake Game!");
 
@@ -38,7 +39,7 @@ int main()
 	Sprite sprite2(t2);
 
 	Clock clock;
-	float timer = 0, delay = 0.1;
+	float timer = 0;
 
 	f.x = 10;
 	f.y = 10;
@@ -63,7 +64,7 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			dir = 0;
 
-		timeDelay(timer, delay, mainGame);
+		timeDelay(timer, mainGame);
 
 		////// draw  ///////
 		window.clear();
@@ -95,14 +96,7 @@ void Tick(Game &mainGame)
 		s[i].y = s[i - 1].y;
 	}
 
-	if (dir == 0) // Down
-		s[0].y += 1;
-	if (dir == 1) // Left
-		s[0].x -= 1;
-	if (dir == 2) // Right
-		s[0].x += 1;
-	if (dir == 3) // Up
-		s[0].y -= 1;
+	directionTick(dir); // Changes direction of Snake
 
 	if ((s[0].x == f.x) && (s[0].y == f.y)) {
 		num++;
@@ -125,10 +119,23 @@ void Tick(Game &mainGame)
 }
 
 // Resets timer if delay > timer
-void timeDelay(float &timer, float &delay, Game &mainGame)
+void timeDelay(float &timer, Game &mainGame)
 {
-	if (timer > delay) {
+	if (timer > mainGame.getDelay()) {
 		timer = 0;
 		Tick(mainGame);
 	}
+}
+
+// Changes diretion of Snake
+void directionTick(int &dir)
+{
+	if (dir == 0) // Down
+		s[0].y += 1;
+	if (dir == 1) // Left
+		s[0].x -= 1;
+	if (dir == 2) // Right
+		s[0].x += 1;
+	if (dir == 3) // Up
+		s[0].y -= 1;
 }
