@@ -17,4 +17,6 @@ public:
 	int getSize() { return size; }
 	int getWidth() { return width; }
 	int getHeight() { return height; }
+
+	// Function Prototypes
 };

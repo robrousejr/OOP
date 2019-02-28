@@ -1,4 +1,6 @@
 #include "Game.h"
+#include <SFML\Graphics.hpp>
+using namespace sf;
 
 // Constructor
 Game::Game(int n, int m, int s)

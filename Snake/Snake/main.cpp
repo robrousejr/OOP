@@ -4,8 +4,11 @@
 
 using namespace sf;
 
+int main();
+
 // Prototypes
 void Tick(Game&);
+void timeDelay(float&, float&, Game&);
 
 
 int dir, num = 4;
@@ -60,10 +63,7 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			dir = 0;
 
-		if (timer > delay) {
-			timer = 0;
-			Tick(mainGame);
-		}
+		timeDelay(timer, delay, mainGame);
 
 		////// draw  ///////
 		window.clear();
@@ -122,4 +122,13 @@ void Tick(Game &mainGame)
 	for (int i = 1; i < num; i++)
 		if (s[0].x == s[i].x && s[0].y == s[i].y)
 			num = i;
+}
+
+// Resets timer if delay > timer
+void timeDelay(float &timer, float &delay, Game &mainGame)
+{
+	if (timer > delay) {
+		timer = 0;
+		Tick(mainGame);
+	}
 }
