@@ -1,12 +1,14 @@
-#include <SFML/Graphics.hpp>
 #include <time.h>
+#include <SFML/Graphics.hpp>
 
 using namespace sf;
 
-int N = 30, M = 20;
-int size = 16;
-int w = size * N;
-int h = size * M;
+// Size of output
+int N = 30; // columns
+int M = 20; // rows 
+int size = 16; 
+int w = size * N; // width
+int h = size * M; // height
 
 int dir, num = 4;
 
@@ -65,6 +67,7 @@ int main()
 	Texture t1, t2;
 	t1.loadFromFile("images/white.png");
 	t2.loadFromFile("images/red.png");
+
 
 	Sprite sprite1(t1);
 	Sprite sprite2(t2);
