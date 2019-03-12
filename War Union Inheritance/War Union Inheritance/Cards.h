@@ -114,7 +114,7 @@ ostream& operator<<(ostream& os, Color color); // color ostream
 ostream& operator<<(ostream& os, Card card); // Card ostream
 ostream& operator<<(ostream& os, Deck &deck); // Deck ostream
 
-											  // Logical Functions
+// Logical Functions
 bool operator==(Card one, Card two);
 bool operator<(Card one, Card two);
 bool operator>(Card one, Card two);
