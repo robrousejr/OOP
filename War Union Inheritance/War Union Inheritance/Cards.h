@@ -36,9 +36,11 @@ enum Rank {
 };
 
 class StandardCard {
+
 private:
 	Suit suit;
 	Rank rank;
+
 public:
 	// Constructor
 	StandardCard(Suit s, Rank r);
