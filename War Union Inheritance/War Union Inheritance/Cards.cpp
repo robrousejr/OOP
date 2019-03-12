@@ -53,7 +53,7 @@ ostream & operator<<(ostream & os, Rank rank)
 		return os << "Two";
 	case Three:
 		return os << "Three";
-	case Four: 
+	case Four:
 		return os << "Four";
 	case Five:
 		return os << "Five";
@@ -128,7 +128,7 @@ ostream & operator<<(ostream & os, Deck & deck)
 {
 	int size = deck.size(); // number of elements in deck
 
-	// Iterate through whole deck
+							// Iterate through whole deck
 	for (int i = 0; i < size; i++)
 	{
 		os << deck[i] << "\n"; // Prints out card value

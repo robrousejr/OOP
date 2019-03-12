@@ -8,21 +8,21 @@ using std::ostream;
 
 
 enum Suit {
-	Spades, 
+	Spades,
 	Clubs,
-	Diamonds, 
+	Diamonds,
 	Hearts
 };
 
 enum Color {
-	Red, 
+	Red,
 	Black
 };
 
 enum Rank {
-	Two, 
-	Three, 
-	Four, 
+	Two,
+	Three,
+	Four,
 	Five,
 	Six,
 	Seven,
@@ -63,7 +63,7 @@ public:
 union CardUnion
 {
 	// Initializing the two cards
-	JokerCard joker; 
+	JokerCard joker;
 	StandardCard standard;
 
 	// Constructors for both types of cards
@@ -92,7 +92,7 @@ public:
 	// Getters
 	bool isStandardCard();
 	bool isJokerCard();
-	Suit getSuit() { return data.standard.getSuit(); } 
+	Suit getSuit() { return data.standard.getSuit(); }
 	Rank getRank() { return data.standard.getRank(); }
 	Color getColor() { return data.joker.getColor(); }
 	StandardCard getStandardCard() { return data.standard; }
@@ -112,7 +112,7 @@ ostream& operator<<(ostream& os, Color color); // color ostream
 ostream& operator<<(ostream& os, Card card); // Card ostream
 ostream& operator<<(ostream& os, Deck &deck); // Deck ostream
 
-// Logical Functions
+											  // Logical Functions
 bool operator==(Card one, Card two);
 bool operator<(Card one, Card two);
 bool operator>(Card one, Card two);
