@@ -12,35 +12,40 @@ void timeDelay(float&, Game&);
 void directionTick(int&);
 
 
-int dir, num = 4;
+int dir;
+int num = 4; // starting tiles in snake body
 
 struct Snake
 {
 	int x, y;
-} s[100]; // ASK: What significance does this have?
+} s[100]; // Creates a Snake array
 
 struct Fruct
 {
-	int x, y;
-}f;
+	int x, y; // x blocks in, y blocks down
+}f; // Snake food
 
 int main()
 {
-	srand(time(0));
+	srand(time(0)); // Seed time
 	Game mainGame(30, 20, 16, 0.1); // Columns: 30, Rows: 20, Size: 16
 
-	RenderWindow window(VideoMode(mainGame.getWidth(), mainGame.getHeight()), "Snake Game!");
+	RenderWindow window(VideoMode(mainGame.getWidth(), mainGame.getHeight()), "Snake Game!"); // Create window
 
+	// Loads images
 	Texture t1, t2;
 	t1.loadFromFile("images/white.png");
 	t2.loadFromFile("images/red.png");
 
-	Sprite sprite1(t1);
-	Sprite sprite2(t2);
+	// Creates sprites from images
+	Sprite sprite1(t1); // Background blocks
+	Sprite sprite2(t2); // Snake/Food
 
 	Clock clock;
 	float timer = 0;
 
+	// Starting spot for Snake food is 1
+	// 10 blocks in, 10 blocks down (start from 0)
 	f.x = 10;
 	f.y = 10;
 
@@ -64,17 +69,19 @@ int main()
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			dir = 0;
 
-		timeDelay(timer, mainGame);
+		timeDelay(timer, mainGame); // calls game
 
 		////// draw  ///////
 		window.clear();
 
+		// Draws background tiles for game
 		for (int i = 0; i < mainGame.getColumns(); i++)
 			for (int j = 0; j < mainGame.getRows(); j++) {
 				sprite1.setPosition(i * mainGame.getSize(), j * mainGame.getSize());
 				window.draw(sprite1);
 			}
 
+		// num is snake size
 		for (int i = 0; i < num; i++) {
 			sprite2.setPosition(s[i].x * mainGame.getSize(), s[i].y * mainGame.getSize());
 			window.draw(sprite2);
@@ -91,6 +98,7 @@ int main()
 
 void Tick(Game &mainGame)
 {
+	// num = 4
 	for (int i = num; i > 0; --i) {
 		s[i].x = s[i - 1].x;
 		s[i].y = s[i - 1].y;
@@ -98,12 +106,15 @@ void Tick(Game &mainGame)
 
 	directionTick(dir); // Changes direction of Snake
 
+	// if snake eats food
 	if ((s[0].x == f.x) && (s[0].y == f.y)) {
 		num++;
+		// Randomly place food elsewhere
 		f.x = rand() % mainGame.getColumns();
 		f.y = rand() % mainGame.getRows();
 	}
 
+	// If snake leaves boundaries, come in through other side
 	if (s[0].x > mainGame.getColumns())
 		s[0].x = 0;
 	if (s[0].x < 0)
@@ -113,6 +124,7 @@ void Tick(Game &mainGame)
 	if (s[0].y < 0)
 		s[0].y = mainGame.getRows();
 
+	// checks if snake runs into itself
 	for (int i = 1; i < num; i++)
 		if (s[0].x == s[i].x && s[0].y == s[i].y)
 			num = i;
