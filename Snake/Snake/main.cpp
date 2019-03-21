@@ -7,8 +7,8 @@ using namespace sf;
 int main();
 
 // Prototypes
-void Tick(Game&);
-void timeDelay(float&, Game&);
+void Tick(Game&, RenderWindow&);
+void timeDelay(float&, Game&, RenderWindow&);
 void directionTick(int&);
 void startGame();
 
@@ -77,7 +77,7 @@ void startGame()
 		if (Keyboard::isKeyPressed(Keyboard::Down))
 			dir = 0;
 
-		timeDelay(timer, mainGame); // calls game
+		timeDelay(timer, mainGame, window); // calls game
 
 		////// draw  ///////
 		window.clear();
@@ -104,17 +104,17 @@ void startGame()
 }
 
 // Resets timer if delay > timer
-void timeDelay(float &timer, Game &mainGame)
+void timeDelay(float &timer, Game &mainGame, RenderWindow &window)
 {
 	if (timer > mainGame.getDelay()) {
 		timer = 0;
-		Tick(mainGame);
+		Tick(mainGame, window);
 	}
 }
 
-void Tick(Game &mainGame)
+void Tick(Game &mainGame, RenderWindow &window)
 {
-	// num = 4
+	// Sets up initial snake spot
 	for (int i = num; i > 0; --i) {
 		s[i].x = s[i - 1].x;
 		s[i].y = s[i - 1].y;
@@ -132,18 +132,19 @@ void Tick(Game &mainGame)
 
 	// If snake leaves boundaries, come in through other side
 	if (s[0].x > mainGame.getColumns())
-		s[0].x = 0;
+		window.close();
 	if (s[0].x < 0)
-		s[0].x = mainGame.getColumns();
+		window.close();
 	if (s[0].y > mainGame.getRows())
-		s[0].y = 0;
+		window.close();
 	if (s[0].y < 0)
-		s[0].y = mainGame.getRows();
+		window.close();
 
 	// checks if snake runs into itself
 	for (int i = 1; i < num; i++)
 		if (s[0].x == s[i].x && s[0].y == s[i].y)
-			num = i;
+			// num = i;
+			window.close(); // game over
 }
 
 // Changes diretion of Snake
