@@ -10,6 +10,7 @@ int main();
 void Tick(Game&);
 void timeDelay(float&, Game&);
 void directionTick(int&);
+void startGame();
 
 
 int dir;
@@ -28,6 +29,13 @@ struct Fruct
 int main()
 {
 	srand(time(0)); // Seed time
+	startGame(); // starts game
+
+	return 0;
+}
+
+void startGame()
+{
 	Game mainGame(30, 20, 16, 0.1); // Columns: 30, Rows: 20, Size: 16
 
 	RenderWindow window(VideoMode(mainGame.getWidth(), mainGame.getHeight()), "Snake Game!"); // Create window
@@ -93,7 +101,15 @@ int main()
 		window.display();
 	}
 
-	return 0;
+}
+
+// Resets timer if delay > timer
+void timeDelay(float &timer, Game &mainGame)
+{
+	if (timer > mainGame.getDelay()) {
+		timer = 0;
+		Tick(mainGame);
+	}
 }
 
 void Tick(Game &mainGame)
@@ -128,15 +144,6 @@ void Tick(Game &mainGame)
 	for (int i = 1; i < num; i++)
 		if (s[0].x == s[i].x && s[0].y == s[i].y)
 			num = i;
-}
-
-// Resets timer if delay > timer
-void timeDelay(float &timer, Game &mainGame)
-{
-	if (timer > mainGame.getDelay()) {
-		timer = 0;
-		Tick(mainGame);
-	}
 }
 
 // Changes diretion of Snake

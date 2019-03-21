@@ -20,5 +20,4 @@ public:
 	int getHeight() { return height; }
 	float getDelay() { return delay; }
 
-	// Function Prototypes
 };

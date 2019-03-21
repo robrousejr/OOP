@@ -8,7 +8,8 @@ Game::Game(int n, int m, int s, float d)
 	columns = n;
 	rows = m;
 	size = s;
+	delay = d;
+
 	width = s * n; 
 	height = s * m;
-	delay = d;
 }
