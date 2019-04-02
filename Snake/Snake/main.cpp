@@ -12,7 +12,6 @@ void timeDelay(float&, Game&, RenderWindow&);
 void directionTick(int&);
 void startGame();
 
-
 int dir;
 int num = 4; // starting tiles in snake body
 
@@ -25,6 +24,11 @@ struct Fruct
 {
 	int x, y; // x blocks in, y blocks down
 }f; // Snake food
+
+struct evilFruct
+{
+	int x, y; // x blocks in, y blocks down
+}ef; // evil food
 
 int main()
 {
@@ -41,13 +45,15 @@ void startGame()
 	RenderWindow window(VideoMode(mainGame.getWidth(), mainGame.getHeight()), "Snake Game!"); // Create window
 
 	// Loads images
-	Texture t1, t2;
+	Texture t1, t2, t3;
 	t1.loadFromFile("images/white.png");
 	t2.loadFromFile("images/red.png");
+	t3.loadFromFile("images/evil.png");
 
 	// Creates sprites from images
 	Sprite sprite1(t1); // Background blocks
 	Sprite sprite2(t2); // Snake/Food
+	Sprite sprite3(t3); // Evil Snake Food
 
 	Clock clock;
 	float timer = 0;
@@ -56,6 +62,10 @@ void startGame()
 	// 10 blocks in, 10 blocks down (start from 0)
 	f.x = 10;
 	f.y = 10;
+
+	// 15 * 15 is location of evil food
+	ef.x = 15;
+	ef.y = 15;
 
 	while (window.isOpen()) {
 		float time = clock.getElapsedTime().asSeconds();
@@ -90,13 +100,19 @@ void startGame()
 			}
 
 		// num is snake size
+		// Draws snake 
 		for (int i = 0; i < num; i++) {
 			sprite2.setPosition(s[i].x * mainGame.getSize(), s[i].y * mainGame.getSize());
 			window.draw(sprite2);
 		}
 
+		
+		// Draws snake food
 		sprite2.setPosition(f.x * mainGame.getSize(), f.y * mainGame.getSize());
 		window.draw(sprite2);
+
+		sprite3.setPosition(ef.x * mainGame.getSize(), ef.y * mainGame.getSize());
+		window.draw(sprite3);
 
 		window.display();
 	}
