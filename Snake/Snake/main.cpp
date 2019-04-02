@@ -63,7 +63,7 @@ void startGame()
 	f.x = 10;
 	f.y = 10;
 
-	// 15 * 15 is location of evil food
+	// 15 * 15 is location of evil food at start
 	ef.x = 15;
 	ef.y = 15;
 
@@ -146,7 +146,13 @@ void Tick(Game &mainGame, RenderWindow &window)
 		f.y = rand() % mainGame.getRows();
 	}
 
-	// If snake leaves boundaries, come in through other side
+	// if snake eats evil food
+	if ((s[0].x == ef.x) && (s[0].y == ef.y))
+	{
+		window.close(); // game over
+	}
+
+	// If snake leaves boundaries, end game
 	if (s[0].x > mainGame.getColumns())
 		window.close();
 	if (s[0].x < 0)
