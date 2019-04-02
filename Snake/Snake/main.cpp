@@ -36,8 +36,8 @@ int main()
 
 void startGame()
 {
+	// columns, rows, size, delay (difficulty)
 	Game mainGame(30, 20, 16, 0.1); // Columns: 30, Rows: 20, Size: 16
-
 	RenderWindow window(VideoMode(mainGame.getWidth(), mainGame.getHeight()), "Snake Game!"); // Create window
 
 	// Loads images

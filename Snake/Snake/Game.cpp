@@ -9,7 +9,6 @@ Game::Game(int n, int m, int s, float d)
 	rows = m;
 	size = s;
 	delay = d;
-
 	width = s * n; 
 	height = s * m;
 }
