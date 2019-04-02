@@ -144,6 +144,15 @@ void Tick(Game &mainGame, RenderWindow &window)
 		// Randomly place food elsewhere
 		f.x = rand() % mainGame.getColumns();
 		f.y = rand() % mainGame.getRows();
+
+		int num = rand() % 3 + 1; // Generate num between 1 - 3
+
+		// 1/3 chance for evil food to move
+		if (num == 2) {
+			// Randomly place evil food elsewhere
+			ef.x = rand() % mainGame.getColumns();
+			ef.y = rand() % mainGame.getRows();
+		}
 	}
 
 	// if snake eats evil food
