@@ -1,8 +1,10 @@
 # Snake SFML Game
 
 ### Newly Added Features (Milestone 3)
-* Added boundaries
+* Added boundaries which can kill Snake
 * Can die from running into self
+* Added evil food which can kill snake
+* Randomly moves evil food around map
 
 ### How to Setup in Visual Studio
 1. Download SFML
