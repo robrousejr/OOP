@@ -1,8 +1,8 @@
 # Snake SFML Game
 
-### Newly Added Features (Milestone 4)
+### Milestone 4
 
-* None yet
+* Nothing other than the startGame() function is in *main*
 
 ### Newly Added Features (Milestone 3)
 * Added boundaries which can kill Snake
