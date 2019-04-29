@@ -1,5 +1,9 @@
 # Snake SFML Game
 
+### Newly Added Features (Milestone 4)
+
+* None yet
+
 ### Newly Added Features (Milestone 3)
 * Added boundaries which can kill Snake
 * Can die from running into self
