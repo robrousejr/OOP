@@ -3,6 +3,8 @@
 ### Milestone 4
 
 * Nothing other than the startGame() function is in *main*
+* Updated commenting and spacing throughout game
+* Code is setup like a framework which could easily be modified to change the game
 
 ### Newly Added Features (Milestone 3)
 * Added boundaries which can kill Snake
