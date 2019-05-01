@@ -23,12 +23,12 @@ struct Snake
 struct Fruct
 {
 	int x, y; // x blocks in, y blocks down
-}f; // Snake food
+} f; // Snake food
 
 struct evilFruct
 {
 	int x, y; // x blocks in, y blocks down
-}ef; // evil food
+} ef; // evil food
 
 int main()
 {
@@ -38,6 +38,7 @@ int main()
 	return 0;
 }
 
+// Starts new Snake game
 void startGame()
 {
 	// columns, rows, size, delay (difficulty)
@@ -78,6 +79,7 @@ void startGame()
 				window.close();
 		}
 
+		// Changes direction of Snake
 		if (Keyboard::isKeyPressed(Keyboard::Left))
 			dir = 1;
 		if (Keyboard::isKeyPressed(Keyboard::Right))
@@ -111,6 +113,7 @@ void startGame()
 		sprite2.setPosition(f.x * mainGame.getSize(), f.y * mainGame.getSize());
 		window.draw(sprite2);
 
+		// Draws evil snake food
 		sprite3.setPosition(ef.x * mainGame.getSize(), ef.y * mainGame.getSize());
 		window.draw(sprite3);
 
@@ -128,6 +131,7 @@ void timeDelay(float &timer, Game &mainGame, RenderWindow &window)
 	}
 }
 
+// Function called every time the Snake 'Ticks' or moves 1 tile
 void Tick(Game &mainGame, RenderWindow &window)
 {
 	// Sets up initial snake spot
@@ -141,6 +145,7 @@ void Tick(Game &mainGame, RenderWindow &window)
 	// if snake eats food
 	if ((s[0].x == f.x) && (s[0].y == f.y)) {
 		num++;
+
 		// Randomly place food elsewhere
 		f.x = rand() % mainGame.getColumns();
 		f.y = rand() % mainGame.getRows();
